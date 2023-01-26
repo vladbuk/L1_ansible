@@ -5,19 +5,11 @@
 
   tasks:
 
-  - name: "list dir"
-    ansible.builtin.shell: ls
-    register: result
-
-  - name: Print shell output
-    ansible.builtin.debug:
-      var: result
-  
   - name: Apt update
     ansible.builtin.apt:
       update_cache: true
   
-  - name: Install a requirements
+  - name: Install requirements
     ansible.builtin.apt:
       pkg:
       - apt-transport-https
@@ -39,3 +31,11 @@
   - name: Apt update
     ansible.builtin.apt:
       update_cache: true
+  
+  - name: Install docker-ce
+    ansible.builtin.apt:
+      name: docker-ce
+      state: present
+  
+  - name: Add current user to docker group
+    ansible.builtin.shell: usermod -aG docker ${USER}
