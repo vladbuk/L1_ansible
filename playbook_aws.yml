@@ -23,7 +23,8 @@
       - apt-transport-https
       - ca-certificates 
       - curl 
-      - software-properties-common mc
+      - software-properties-common 
+      - mc
   
   - name: Install docker gpg key
     ansible.builtin.apt_key:
